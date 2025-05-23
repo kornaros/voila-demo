@@ -1,8 +1,8 @@
-FROM sagemath/sagemath:latest
+FROM sagemath/sagemath:9.8
 
-RUN sage -pip install voila ipywidgets
+RUN sage -python -m pip install voila ipywidgets
 
 COPY . /home/sage/app
 WORKDIR /home/sage/app
 
-CMD voila coin_game.ipynb --port=$PORT --no-browser --Voila.configuration.allow_origin="*"
+CMD ["voila", "coin_game.ipynb", "--port=$PORT", "--no-browser", "--Voila.ip=0.0.0.0", "--Voila.configuration.allow_origin='*'"]
