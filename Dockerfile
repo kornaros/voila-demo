@@ -4,9 +4,9 @@ RUN sage -python -m pip install voila notebook ipywidgets
 
 # Αντιγράφουμε όλα τα αρχεία στον φάκελο εργασίας
 #COPY . /home/sage/app
-COPY start.sh /home/sage/app/start.sh
+#COPY start.sh /home/sage/app/start.sh
 WORKDIR /home/sage/app
-
+COPY . .
 # Εκκίνηση με Voilà, μπορείς να τρέξεις όποιο notebook θες με παράμετρο
 # Αυτή η μορφή είναι πλήρως συμβατή με το Render και δουλεύει σωστά με το binding της πόρτας $PORT.
 # CMD ["sh", "-c", "voila coin_game.ipynb --port=$PORT --no-browser --ip=0.0.0.0"]
