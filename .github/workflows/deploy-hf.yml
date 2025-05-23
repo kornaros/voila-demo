@@ -24,4 +24,4 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           huggingface-cli login --token $HF_TOKEN
-          huggingface-cli repo sync --repo-id username/space-name --repo-type=space
+          huggingface-cli repo sync --repo-id kornaros/voila-coin-game --repo-type=space
