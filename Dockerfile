@@ -18,5 +18,6 @@ WORKDIR /home/sage/app
 #CMD ["voila", "coin_game.ipynb", "--port", "8866", "--no-browser", "--ip=0.0.0.0", "--Voila.configuration.enable_nbextensions=True"]
 #CMD ["voila", "coin_game.ipynb", "--port=8866", "--no-browser", "--ip=0.0.0.0"]
 #CMD voila coin_game.ipynb --port=$PORT --no-browser --ip=0.0.0.0
-CMD ["sh", "-c", "voila coin_game.ipynb --port=$PORT --no-browser --ip=0.0.0.0"]
+#CMD ["sh", "-c", "voila coin_game.ipynb --port=$PORT --no-browser --ip=0.0.0.0"]
 
+CMD ["./start.sh"]
