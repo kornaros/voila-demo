@@ -1,27 +1,10 @@
 FROM sagemath/sagemath:9.8
 
-RUN sage -python -m pip install voila notebook ipywidgets
+RUN sage -python -m pip install voila
 
-# Αντιγράφουμε όλα τα αρχεία στον φάκελο εργασίας
-#COPY . /home/sage/app
-#COPY start.sh /home/sage/app/start.sh
-WORKDIR /home/sage/app
-COPY . .
-#COPY start.sh /home/sage/app/start.sh
-# Εκκίνηση με Voilà, μπορείς να τρέξεις όποιο notebook θες με παράμετρο
-# Αυτή η μορφή είναι πλήρως συμβατή με το Render και δουλεύει σωστά με το binding της πόρτας $PORT.
-# CMD ["sh", "-c", "voila coin_game.ipynb --port=$PORT --no-browser --ip=0.0.0.0"]
-#CMD ["voila", "coin_game.ipynb", "--port", "${PORT}", "--no-browser", "--ip=0.0.0.0", "--Voila.configuration.allow_origin='*'"]
-# Καθαρό CMD χωρίς το πρόβλημα με allow_origin
-#CMD ["voila", "coin_game.ipynb", "--port", "8866", "--no-browser", "--ip=0.0.0.0"]
-# Ορίζουμε default PORT αν δεν το δώσει το Render
-#ENV PORT=8866
+COPY . /app
+WORKDIR /app
 
-#CMD ["voila", "coin_game.ipynb", "--port", "8866", "--no-browser", "--ip=0.0.0.0", "--Voila.configuration.enable_nbextensions=True"]
-#CMD ["voila", "coin_game.ipynb", "--port=8866", "--no-browser", "--ip=0.0.0.0"]
-#CMD voila coin_game.ipynb --port=$PORT --no-browser --ip=0.0.0.0
-#CMD ["sh", "-c", "voila coin_game.ipynb --port=$PORT --no-browser --ip=0.0.0.0"]
-# Κάνε το start.sh εκτελέσιμο (αν δεν το έκανες μέσω GitHub)
-RUN chmod +x start.sh
+ENV PORT=7860
 
-CMD ["./start.sh"]
+CMD ["voila", "coin_game.ipynb", "--port=7860", "--no-browser", "--ip=0.0.0.0"]
