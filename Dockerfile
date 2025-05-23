@@ -3,7 +3,8 @@ FROM sagemath/sagemath:9.8
 RUN sage -python -m pip install voila notebook ipywidgets
 
 # Αντιγράφουμε όλα τα αρχεία στον φάκελο εργασίας
-COPY . /home/sage/app
+#COPY . /home/sage/app
+COPY start.sh /home/sage/app/start.sh
 WORKDIR /home/sage/app
 
 # Εκκίνηση με Voilà, μπορείς να τρέξεις όποιο notebook θες με παράμετρο
