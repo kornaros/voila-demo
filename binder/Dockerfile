@@ -1,8 +1,9 @@
 FROM sagemath/sagemath:9.8
 
-RUN sage -python -m pip install voila notebook
+RUN sage -python -m pip install voila notebook ipywidgets
 
 COPY . /home/sage/app
 WORKDIR /home/sage/app
 
-CMD ["voila", "coin_game.ipynb", "--port=8888", "--no-browser", "--Voila.ip=0.0.0.0", "--Voila.configuration.allow_origin='*'"]
+CMD ["voila", "coin_game.ipynb", "--port=$PORT", "--no-browser", "--ip=0.0.0.0"]
+
