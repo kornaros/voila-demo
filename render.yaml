@@ -2,5 +2,5 @@ services:
   - type: web
     name: voila-sagemath-app
     env: python
-    startCommand: voila --port $PORT coin_game.ipynb --enable_nbextensions=True
+    dockerfilePath: Dockerfile
     plan: free
