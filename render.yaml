@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: voila-sagemath-app
+    name: voila-demo-kornaros
     env: docker
     plan: free
-    dockerfilePath: Dockerfile
+    dockerfilePath: Dockerfile # Αυτό σημαίνει ρίζα repo
