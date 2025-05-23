@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: voila-sagemath-app
+    env: docker
+    dockerfilePath: Dockerfile
+    plan: free
