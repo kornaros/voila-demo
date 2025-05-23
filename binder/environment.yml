@@ -1,0 +1,8 @@
+name: sage-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - sagemath=9.8
+  - notebook
+  - voila
