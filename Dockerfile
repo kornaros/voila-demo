@@ -15,4 +15,5 @@ WORKDIR /home/sage/app
 # Ορίζουμε default PORT αν δεν το δώσει το Render
 ENV PORT=8866
 
-CMD ["voila", "coin_game.ipynb", "--port", "8866", "--no-browser", "--ip=0.0.0.0", "--Voila.configuration.enable_nbextensions=True"]
+#CMD ["voila", "coin_game.ipynb", "--port", "8866", "--no-browser", "--ip=0.0.0.0", "--Voila.configuration.enable_nbextensions=True"]
+CMD ["voila", "coin_game.ipynb", "--port=8866", "--no-browser", "--ip=0.0.0.0"]
