@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: voila-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: voila coin_game.ipynb --port $PORT --no-browser --Voila.configuration.allow_origin="*"
+    plan: free
