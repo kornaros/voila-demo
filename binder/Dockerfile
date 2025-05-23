@@ -1,28 +1,12 @@
-FROM ghcr.io/akontog/sagemath:10.6
+# Βασική εικόνα με SageMath 9.8 (μπορείς να αλλάξεις έκδοση αν θες)
+FROM sagemath/sagemath:9.8
 
-ARG NB_USER=jovyan
-ARG NB_UID=1000
-ENV NB_USER ${NB_USER}
-ENV NB_UID ${NB_UID}
-ENV HOME /home/${NB_USER}
-
-USER root
-
-RUN adduser --disabled-password --gecos "Default user" --uid ${NB_UID} ${NB_USER}
-
-# Install voila and ipywidgets
+# Εγκαθιστούμε voila και ipywidgets μέσα στο περιβάλλον SageMath
 RUN sage -python -m pip install voila ipywidgets
 
-# Αντιγραφή όλων των αρχείων του repo στον home φάκελο του χρήστη
-COPY . ${HOME}/
-RUN chown -R ${NB_USER}:${NB_USER} ${HOME}
+# Αντιγράφουμε όλα τα αρχεία του repo μέσα στο container
+COPY . /home/sage/app
+WORKDIR /home/sage/app
 
-USER ${NB_USER}
-
-# Δημιουργία συνδέσμου για το Sage kernel στο Jupyter
-RUN mkdir -p $(jupyter --data-dir)/kernels
-RUN ln -s /sage/venv/share/jupyter/kernels/sagemath $(jupyter --data-dir)/kernels
-
-WORKDIR ${HOME}
-
-CMD ["voila", "coin_game.ipynb", "--port=8888", "--no-browser", "--ip=0.0.0.0"]
+# Εκκίνηση του voila στο αρχείο notebook (προσαρμόζεις το όνομα αν θες)
+CMD ["voila", "coin_game.ipynb", "--port=8866", "--no-browser", "--ip=0.0.0.0"]
