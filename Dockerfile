@@ -7,4 +7,5 @@ COPY . /home/sage/app
 WORKDIR /home/sage/app
 
 # Εκκίνηση με Voilà, μπορείς να τρέξεις όποιο notebook θες με παράμετρο
-CMD ["voila", "coin_game.ipynb", "--port=$PORT", "--no-browser", "--Voila.ip=0.0.0.0", "--Voila.configuration.allow_origin='*'"]
+# Αυτή η μορφή είναι πλήρως συμβατή με το Render και δουλεύει σωστά με το binding της πόρτας $PORT.
+CMD voila coin_game.ipynb --port=$PORT --no-browser --ip=0.0.0.0
