@@ -9,4 +9,5 @@ COPY . /home/sage/app
 WORKDIR /home/sage/app
 
 # Εκκίνηση του voila στο αρχείο notebook (προσαρμόζεις το όνομα αν θες)
-CMD ["voila", "coin_game.ipynb", "--port=8866", "--no-browser", "--ip=0.0.0.0"]
+
+CMD ["voila", "coin_game.ipynb", "--port=$PORT", "--no-browser", "--ip=0.0.0.0"]
