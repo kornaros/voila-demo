@@ -1,0 +1,36 @@
+name: Sync to Hugging Face Space
+
+on:
+  push:
+    branches:
+      - main   # ή το όνομα του branch που χρησιμοποιείς
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout GitHub repo
+      uses: actions/checkout@v3
+
+    - name: Configure git for HF
+      run: |
+        git config --global user.email "kornaros@aegean.gr"
+        git config --global user.name "kornaros"
+
+    - name: Clone Hugging Face Space repo
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      run: |
+        git clone https://kornaros:${HF_TOKEN}@huggingface.co/spaces/kornaros/voila-coin-game.git hf_space
+
+    - name: Copy files to HF Space repo
+      run: |
+        rsync -av --delete ./ hf_space/ --exclude .git --exclude .github
+
+    - name: Commit & Push to HF Space repo
+      working-directory: hf_space
+      run: |
+        git add .
+        git commit -m "Sync from GitHub repo" || echo "No changes to commit"
+        git push
