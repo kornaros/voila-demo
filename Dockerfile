@@ -13,7 +13,7 @@ WORKDIR /home/sage/app
 # Καθαρό CMD χωρίς το πρόβλημα με allow_origin
 #CMD ["voila", "coin_game.ipynb", "--port", "8866", "--no-browser", "--ip=0.0.0.0"]
 # Ορίζουμε default PORT αν δεν το δώσει το Render
-ENV PORT=8866
+#ENV PORT=8866
 
 #CMD ["voila", "coin_game.ipynb", "--port", "8866", "--no-browser", "--ip=0.0.0.0", "--Voila.configuration.enable_nbextensions=True"]
 #CMD ["voila", "coin_game.ipynb", "--port=8866", "--no-browser", "--ip=0.0.0.0"]
